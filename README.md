@@ -223,7 +223,8 @@ u : **dosya sahibi (user)** <br/>
 g - **dosya sahibibin grubu (group)** <br/>
 o - **diğer kullanıcıları (others)** <br/>
 a - **tüm hakları (a)** <br/>
-+ - **yetki ekleme** <br/>
+
+(+) - **yetki ekleme** <br/>
 = - **yetki eşitleme** <br/>
 — : **yetki çıkarma** <br/>
 r - **okuma yetkisi (read)** <br/>
