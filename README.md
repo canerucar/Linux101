@@ -313,7 +313,280 @@ mkfs -t ext4 /dev/sdb1 <br/>
 **Disk işlemleri için fdisk komutu kullanılabileceği gibi daha kolay arayüzü olan cfdisk komutu da kullanılabilir.** <br/>
 cfdisk /dev/sdb <br/>
 
+**Linux Kullanıcı İşlemleri** <br/>
+**Kullanıcı Değiştirme** <br/>
+su caner : **Kullanıcı hesabını değiştirmek için su komutu kullanılır.** <br/>
+Komut sonucunda aktif kullanıcı caner adlı kullanıcı olur. <br/>
 
+**Komutu en yetkili kullanıcı root ile çalıştırmak için sudo kumutu kullanılır.** <br/>
+sudo <komut> <br/>
+  
+**Kullanıcı işlemleri ve bazu özel işlemlerde sudo komutunun kullanılması istenmeyen durumlar için faydalı olacaktır.** <br/>
+
+**Kullanıcı oluşturma <br/>
+Kullanıcı oluşturmak için aduser veya useradd komutları kullanılır.** <br/>
+sudo adduser caner <br/>
+
+**Komut kök dizindeki home dizinine kullanıcı dizini oluşturarak hesabı oluşturur.** <br/>
+sudo useradd caner <br/>
+
+**Kullanıcı şifre değiştirme ** <br/>
+**Kullanıcı şifresini değiştirmek için passwd komutu kullanılır. ** <br/>
+passwd ** <br/>
+
+**Komuta parametre olarak herhangi bir kullanıcı adı verilmediğinde aktif kullanıcı için işlem yapar.** <br/>
+sudo passwd caner <br/>
+**Komut sistemde bulunan caner kullanıcısının şifresini değiştirir.** <br/>
+
+**Kullanıcı Silme <br/>
+Kullanıcı silmek için userdel komutu kullanılır.** <br/>
+sudo userdel caner <br/>
+**Komut sadece kullanıcıyı silecektir, kullanıcıyı dosyaları ile birlikte silmek için r parametresi kullanılır.** <br/>
+sudo userdel -r caner <br/>
+
+**Grup Oluşturma <br/>
+Kullanıcı grubu oluşturmak için groupadd komutu kullanılır.** <br/>
+sudo groupadd ogrenciler <br/>
+**Grupları listeleme <br/>
+Kullanıcıların üye olduğu grupları listelemek için groups komutu kullanılır.** <br/>
+groups <kullanici_adi> <br/>
+
+**Grup silme** <br/>
+**Kullanıcı grubu silmek için groupdel komutu kullanılır.** <br/>
+sudo groupdel ogrenciler <br/>
+
+**Kullanıcı yetkilendirme <br/>
+Kullanıcı yetkilendirme işlemleri için usermod komutu ve parametreleri kullanılır.** <br/>
+sudo usermod -a -G <grup> <kullanici> <br/>
+  
+**Kullanıcıyı grup ile belirtilen gruba ekler** <br/>
+
+**Kullanıcıyı kilitleme <br/>
+Kullanıcıyı kilitlemek veya dondurmak için usermod komutunun L parametresi kullanılır.** <br/>
+sudo usermod -L <kullanici> <br/>
+
+**Kullanıcı kilit kaldırma <br/>
+Kilitlenmiş veya dondurulmuş kullanıcının kilidini açmak için usermod komutu U parametresi kullanılır.** <br/>
+sudo usermod -U <kullanici> <br/>
+
+**Kullanıcı listesi <br/>
+Linux tabablı işletim sistemlerinde her şey bir dosya olduğunda kullanıcılari gruplar dosyalarda saklanır.** <br/>
+
+**Kullanıcı listesi için /etc/passwd dosyasına bakılır. <br/>
+Kullanıcı sayısını almak için Linux Çıktı Yönlendirme kullanılarak aşağıdaki gibi elde edilebilir.** <br/>
+cat /etc/passwd | wc -l <br/>
+veya <br/>
+wc -l /etc/passwd <br/>
+
+**Linux Sıkıştırma İşlemleri** <br/>
+**Linux dağıtımlarında arşivleme veya yedekleme işlemleri için gzip, bzip2, lzma vb. yöntemler ve komutları mevcuttur.** <br/>
+
+**Arşivleme ve sıkıştırma işlemleri farklı komutlarla yapılabileceği gibi sadece tar komutuna çeşitli parametre veripte yapılır.** <br/>
+tar <parametre> <arsiv_adi.uzanti> <dosyalar> <br/>
+
+**Komut Parametreleri** <br/>
+c - **arşiv oluşturmak için** <br/>
+f - **dosyaya yazdırmak için** <br/>
+t - **arşivdeki dosyalaro listelemek için** <br/>
+v - **komut çıktılarını ekrana yazdırmak için** <br/>
+x - **arşiv dosyasını çıkarmak için** <br/>
+z - **arşiv yöntemi olarak gzip kullanmak için** <br/>
+p - **arşivdeli dosya ve dizin izinlerini de eklemek için** <br/>
+j - **arşiv yöntemi olarak bzip2 kullanmak için kullanılır.** <br/> 
+
+**Aşağıdaki komut mevcut dizindeki tüm dosyaları arsiv.tar olarak arşivlemek için kullanılır.** <br/> 
+tar –cvf arsiv.tar * <br/> 
+**Listelemek için** <br/> 
+tar –tf arsiv.tar <br/> 
+**Detaylı listelemek için v komutu eklenebilir.** <br/> 
+tar –tvf arsiv.tar <br/> 
+**Arşiv dosyalarını çıkarmak için x parametresi kullanılır.** <br/> 
+tar –xvf arsiv.tar <br/> 
+**Arşive ekleme yapmak için r parametresi kullanılır.** <br/> 
+tar –rf arsiv.tar <br/> 
+**Arşivleri birleştirmek için A parametresi kullanılır.** <br/> 
+tar –Af arsiv1.tar arsiv2.tar <br/> 
+**Arşivi bzip2 yöntemine göre oluşturmak için j veya bzip2 parametersi kullanılır.** <br/> 
+tar –jcf arsiv.tar.bz * <br/> 
+**Arşivi gzip yöntemine göre oluşturmak için z veya gzip parametresi kullanılır.** <br/> 
+tar –zcf arsiv.tar.gz * <br/> 
+**Arşivi açarken dosya ve dizin izinlerini korumak için p parametresi kullanılır.** <br/> 
+tar –xvfp arsiv.tar <br/> 
+
+**Linux Network İşlemleri** <br/> 
+**Linux işletim sistemlerinde her şey bir dosya olduğu gibi network ayarları da dosyalarda tutulmaktadır.** <br/> 
+
+**Network Dosyaları** <br/> 
+
+- /etc/sysconfig/network dosyası <br/> 
+- /etc/sysconfig/network-scripts dizini <br/> 
+- /etc/hosts <br/> 
+- /etc/resolv.conf <br/> 
+- /etc/nsswitch.conf <br/> 
+- /etc/services <br/> 
+
+**Ayar dosyalarının her birisi farklı işlemler için kullanılmaktadır.** <br/> 
+**Network ayarları ifcfg ile başlayan dosyalarla ağ kartına göre eth0, eth1 vb. isimlerle tutulur.** <br/> 
+**Network ayarlarının içindeki,** <br/> 
+DEVICE - **Ağ kartının adını,** <br/> 
+ONBOOT - **Ağın açılıştaki aktif edilme durumunu,** <br/> 
+BOOTPROTO - **Network ayarlarının nasıl yapılacağını (static,dhcp, bootp),** <br/> 
+IPADDR - **IP adresini,** <br/> 
+NETMASK - **Ağ maskesini,** <br/> 
+BROADCAST - **Broadcast adresini,** <br/> 
+GATEWAY - **Gateway adresini belirtir.** <br/> 
+
+**Ayrıca MAC adresi Ağ tipi gibi çeşitli ayarlarda bulunmaktadır.** <br/> 
+**DHCP kullanarak IP alınmak istendiğinde DEVIC, BOOTPROTO ve ONBOOT ayarlarının yazılması yeterli olacaktır.** <br/> 
+
+**NETWORK İşlemleri <br/> 
+Dosyadaki değişikliklerin etkin olabilmesi için network servisinin yeniden başlatılması gerekir.** <br/> 
+
+**Ağı durdurmak için stop parametresi kullanılır.** <br/> 
+service network stop <br/> 
+
+**Ağı başlatmak için start.** <br/> 
+service network start <br/> 
+
+**Ağı yeniden başlatmak için restart veya reload parametresi.** <br/> 
+service network restart <br/> 
+service network reload <br/> 
+
+**Network bilgisini öğrenme** <br/> 
+**Ağ bilgilerini öğrenmek için ifconfig komutu kullanılabilir.** <br/> 
+ifconfig <br/> 
+
+**Komut çıktı olarak sistemdeki etkin ağ kartlarındaki IP adresi, MAC adresi, Paket vb. bilgileri listeler.** <br/> 
+
+**Belirli bir ağ kartının bilgisini almak için parametre olarak ağ kartının adının yazılması yeterli olacaktır.** <br/> 
+ifconfig eth0 <br/> 
+
+**Komut ile ayrıca ağ kartına ait çeşitli geçici ayarlarda yapılabilir.** <br/> 
+ifconfig eth0 <IP_Adresi> netmask <Netmask_Adresi> broadcast <Broadcast_Adresi> <br/> 
+**Ayarların kalıcı olması için ağ kartına ait ayar dosyasının düzenlenmesi gerekir.** <br/> 
+**Ağ kartını devre dışı bırakmak için down parametresi kullanılır.** <br/> 
+ifconfig eth0 down <br/> 
+ifdown eth0 <br/> 
+
+**Ağ kartını aktif etmek için up parametresi kullanılır.** <br/> 
+ifconfig eth0 up <br/> 
+ifup eth0 <br/> 
+ 
+**Network ile ilgili bilgi almak için ayrıca ip komutu da kullanılabilir.** <br/> 
+**Ağ ayarlarını komut penceresinde çeşitli araçlarla görsel arayüz ile yapmak olası hataların önüne geçecektir.** <br/> 
+
+**Network Komutları** <br/> 
+**Network izleme, takibi vb, bilgileri almak için netstat komutu kullanılır.** <br/> 
+netstat
+
+**Network istatistiklerini almak için i parametresi kullanılır.** <br/> 
+netstat -i <br/> 
+
+**Bir adresi kontrol etmek için ping komutu kullanılır.** <br/> 
+ping <adres> <br/> 
+
+**Gönderilecek paket sayısı için c parametresi kullanılır.** <br/> 
+ping -c <adres> <br/> 
+
+**Bir adrese erişim için kullanılan yol ile ilgili bilgi almak için traceroute komutu kullanılır.** <br/> 
+traceroute <adres> <br/> 
+  
+**Uzaktaki makineye telnet protokolü ile bağlanmak için telnet komutu kullanılır.** <br/> 
+telnet <adres> <br/> 
+
+**Uzaktaki makineye ftp protokolü ile bağlanmak için ftp komutu kullanılır.** <br/> 
+ftp <adres> <br/> 
+
+man : **manuel** <br/> 
+man ls : **ls komutu hakkında bilgi istiyoruz** <br/> 
+
+shutdown -h now : **bilgisayarı kapattık** <br/> 
+reboot : **yeniden başlatmak için** <br/> 
+history : **yazılmış tüm komutları gösterir** <br/> 
+
+
+top : **çalışmakta olan process’leri gösteriyor. çıkış yapmak için q** <br/>  
+ps aux : **bilgisayarımda çalışan her şeyi gösteriyor** <br/> 
+ps : **bu shell dekileri gösterir** <br/> 
+
+diff : **iki dosyanın içeriğini satır satır karşılaştırır : diff dosya1.ext dosya2.ext** <br/> 
+free : **bellek kullanımını gösterir** <br/> 
+
+-- uname –r: **Kernel sürümünü gösterir.** <br/> 
+-- uname –s: **Sistem ismini gösterir.** <br/> 
+-- uname –v: **İşletim sisteminin versiyonunu gösterir.** <br/> 
+-- uname –a: **Yukarıdaki komutlar ve diğer uname komutlarının tamamını gösterir.** <br/> 
+“Who” **komutu o anda sistemde oturum açmış kullanıcıların listesini gösterir.** <br/> 
+
+**gzip ile sıkıştıma ve açma yöntemi** <br/> 
+gzip -9 dosya : **Dosya sıkıştırmak için** <br/> 
+**Belirttiğimiz dosya’yı en iyi şekilde sıkıştırır ve dosya.gz haline getirir.** <br/> 
+
+gunzip dosya.gz : **Dosya açmak için.** <br/> 
+gzip ile sıkıştırılmış dosya.gz dosyasını dosya olarak açar. <br/> 
+
+
+**bzip2 ile sıkıştırma ve açma yöntemi** <br/> 
+**Dosya sıkıştırmak için** <br/> 
+bzip2 dosya <br/> 
+**Belirtilen dosya'yı en iyi şekilde sıkıştırır ve dosya.bz2 haline getirir. Çoğunlukla gzip'den daha iyi sıkıştırır.** <br/> 
+
+**Dosya açmak için** <br/> 
+bunzip2 dosya.bz2 <br/> 
+bzip2 ile sıkıştırılmış dosya.bz2 dosyasını dosya olarak açar. <br/> 
+
+
+**tar ile depolama ve açma yöntemi** <br/> 
+**Dosya depolamak için** <br/> 
+tar -cvf dosya.tar dosya <br/> 
+**Belirtilen dosya'yı depolar dosya.tar haline getirir.** <br/> 
+
+**Dosya açmak için** <br/> 
+tar -xvf dosya.tar <br/> 
+tar ile depolanmış dosya.tar dosyasını dosya olarak açar. <br/> 
+
+**tar.gz ile sıkıştırma ve açma yöntemi** <br/> 
+**Dosya sıkıştırmak için** <br/> 
+tar -zcvf dosya.tar.gz klasor1 klasor2 dosya <br/> 
+**Belirtilen klasor ve/veya dosya'ları dosya.tar dosyası haline getirir ve ardından gzip ile sıkıştırıp dosya.tar.gz haline getirir.** <br/> 
+
+**Dosya açmak için** <br/> 
+tar -zxvf dosya.tar.gz <br/> 
+**İsmi dosya.tar.gz gibi belirtilen sıkıştırılmış arşiv dosyasını bulunulan klasör'e açar. Uzantısı .tar.gz olan dosyalardan başka .tgz olan dosyaları da açar.** <br/> 
+
+**Dosyayı farklı klasör'e açmak için** <br/>  
+tar -zxvf dosya.tar.gz -C klasor <br/> 
+**Sıkıştırılmış dosya.tar.gz dosyasını belirtilen klasor'e açar.** <br/> 
+
+**zip ile sıkıştırma ve açma yöntemi** <br/> 
+**Dosya sıkıştırmak için** <br/> 
+zip -r dosya.zip dosya_yada_klasor <br/>
+klasor ve/veya dosya'ları sıkıştırır ve dosya.zip haline getirir. <br/>
+
+**Dosya açmak için** <br/>
+unzip dosya.zip <br/>
+**zip ile sıkıştırılmış dosya.zip dosyasını dosya olarak açar.** <br/>
+**Şifreli dosya açmak için** <br/>
+unzip -P Şifre dosya.zip <br/>
+**zip ile sıkıştırılmış şifreli dosya.zip dosyasını dosya olarak açar.** <br/>
+
+**rar ile sıkıştırma ve açma yöntemi** <br/>
+**Dosya sıkıştırmak için** <br/>
+rar a -ap dosya.rar dosya_yada_klasor <br/>
+**klasor ve/veya dosya'ları sıkıştırır ve dosya.rar haline getirir.** <br/>
+**Şifreli dosya sıkıştırmak için** <br/>
+rar a -ap -p dosya.rar dosya_yada_klasor <br/>
+klasor ve/veya dosya'ları şifreli olarak sıkıştırır ve dosya.rar haline getirir. Not : Şifreyi iki kez sorar. <br/>
+Dosya açmak için : unrar e dosya.rar <br/>
+**rar ile sıkıştırılmış dosya.rar dosyasını dosya olarak açar.** <br/>
+
+**Şifreli dosya açmak için** <br/>
+unrar e -p Şifre dosya.rar <br/>
+**rar ile sıkıştırılmış şifreli dosya.rar dosyasını dosya olarak açar.** <br/>
+
+şimdilik bu kadar.... eklemeler reklamlardan sonra devam edecek....
+
+<img align="left" src="https://media1.tenor.com/images/859d5934c52d6b723e46598d3636c76e/tenor.gif?itemid=11940513">
 
 
 
