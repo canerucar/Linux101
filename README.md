@@ -594,6 +594,8 @@ unrar e -p Şifre dosya.rar <br/>
 
 🧭 https://mertcangokgoz.com/ise-yarar-8-linux-grep-komut-ve-kullanimi/
 
+🐥 https://www.hostinger.web.tr/rehberler/linux-chown-komutu/#Sahiplik-Bilgilerini-Goruntuleme
+
 
 <img align="left" src="https://media1.tenor.com/images/859d5934c52d6b723e46598d3636c76e/tenor.gif?itemid=11940513">
 
