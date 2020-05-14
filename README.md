@@ -586,6 +586,11 @@ unrar e -p Şifre dosya.rar <br/>
 
 şimdilik bu kadar.... eklemeler reklamlardan sonra devam edecek....
 
+**Çeşitli kaynaklar**
+
+💣 https://www.gokhanmankara.com/2009/10/chmod-komutu-ve-kullanimi/
+
+
 <img align="left" src="https://media1.tenor.com/images/859d5934c52d6b723e46598d3636c76e/tenor.gif?itemid=11940513">
 
 
