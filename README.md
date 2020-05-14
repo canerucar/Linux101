@@ -592,6 +592,8 @@ unrar e -p Şifre dosya.rar <br/>
 
 🕵️‍ https://www.youtube.com/playlist?list=PLdsuYoU-cepINK2rkNlTt4na1AP7MZ6HY
 
+🧭 https://mertcangokgoz.com/ise-yarar-8-linux-grep-komut-ve-kullanimi/
+
 
 <img align="left" src="https://media1.tenor.com/images/859d5934c52d6b723e46598d3636c76e/tenor.gif?itemid=11940513">
 
